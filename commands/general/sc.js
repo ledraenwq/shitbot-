@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 exports.run = async (bot, message, args) => {
   const embed = new Discord.MessageEmbed()
     .setTitle("Github Repo")
-    .setDescription("https://github.com/cinoez/shitbot")
+    .setDescription("https://github.com/cinoez/shitbot-")
     .setColor(0xFFB900)
   message.channel.send(embed)
 }

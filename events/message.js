@@ -51,13 +51,21 @@ module.exports = async (client, message) => {
   }
 
 
-    if(message.content.includes("@everyone")) 
+  if (message.content.includes(["@everyone"]))
     if (message.member.hasPermission("MANAGE_GUILD")) return
-    else {message.delete()
-    message.channel.send("Everyone atamazsın.")
+  else {
     message.delete()
-    }
-    
+    message.channel.send("Ever atamazsın.")
+    message.delete()
+  }
+  if (message.content.includes(["@here"]))
+    if (message.member.hasPermission("MANAGE_GUILD")) return
+  else {
+    message.delete()
+    message.channel.send("Here atamazsın.")
+    message.delete()
+  }
+
 
 
   if (!message.guild) return;

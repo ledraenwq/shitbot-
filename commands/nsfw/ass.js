@@ -1,13 +1,12 @@
 const Discord = require("discord.js");
 const got = require("got")
 const db = require("quick.db")
-let { default_prefix } = require("../../config.json")
+let {
+  default_prefix
+} = require("../../config.json")
 
 exports.run = async (bot, message, args) => {
-  let bagıs = await db.fetch(`bagis_${message.author.id}`)
-  if (bagıs === null) bagıs = 0
-  else if (bagıs === true) bagıs = 100
-  if (bagıs === 100) {
+
   if (message.channel.nsfw === true) {
     const embed = new Discord.MessageEmbed();
     got('https://www.reddit.com/r/ass/random/.json').then((response) => {
@@ -25,10 +24,9 @@ exports.run = async (bot, message, args) => {
       embed.setTimestamp()
       message.channel.send(embed);
     });
-  }else if(message.channel.nsfw === false) {
+  } else if (message.channel.nsfw === false) {
     message.channel.send("Burası NSFW kanalı değil amk sapığı")
   }
-} else return message.channel.send(`Patreon üyesi değilsin \`${default_prefix}bağış\` diyerek bilgi alabilirsin.`)
 }
 
 exports.help = {

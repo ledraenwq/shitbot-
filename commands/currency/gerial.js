@@ -20,7 +20,7 @@ exports.run = async (bot, message, args) => {
     message.channel.send(`${bank} lirayı cüzdana aktardım`)
     db.add(`money_${user.id}`, bank);
     db.subtract(`bank_${user.id}`, bank)
-  }else if (isNaN(args[0])) {
+  } else if (isNaN(args[0])) {
     return message.channel.send("Mal mısın amk sayı olmayan bir şeyi nasıl geri alıcan.")
   } else if (bank === 0) {
     return message.channel.send('Kasanda o kadar para yok ab');
@@ -28,7 +28,7 @@ exports.run = async (bot, message, args) => {
     return message.channel.send('Kasanda o kadar para yok ab');
 
 
-   else {
+  else {
     db.subtract(`bank_${user.id}`, args[0]);
     db.add(`money_${user.id}`, args[0]);
     message.channel.send(`${args[0]} lirayı cüzdana aktardım`);
