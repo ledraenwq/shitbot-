@@ -19,7 +19,7 @@ exports.run = async (bot, message, args) => {
   if (talkedRecently.has(message.author.id)) {
     message.channel.send('Yavaş orspuçocu');
   } else {
-    let chance = Math.floor(Math.random() * 10);
+    let chance = Math.ceil(Math.random() * 10);
 
     if (user.bot) {
       const botembed = new Discord.MessageEmbed()
