@@ -2,9 +2,9 @@ const Discord = require("discord.js")
 const db = require("quick.db")
 let msg;
 
-exports.run =  (bot, message, args) => {
-  message.channel.send("`A`")
-  }
+exports.run = (bot, message, args) => {
+  message.channel.send("`Abo`")
+}
 
 exports.help = {
   name: "deneme",
