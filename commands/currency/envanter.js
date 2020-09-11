@@ -12,12 +12,12 @@ function wait(ms) {
 
 exports.run = async (client, message, args) => {
     try {
-        let items = db.fetch(message.author.id)
-        let user = message.author || message.mentions.users.first()
+        let user = message.author
+        let items = db.get(user.id)
         if (items === null) items = "Bu kullanıcı fakir (hiç bir şeyi yok abo)"
 
         let embed = new Discord.MessageEmbed()
-            .setTitle(`${message.author.username}'in envanteri`)
+            .setTitle(`${user.username}'in envanteri`)
             .setColor("RANDOM")
             .addField("Eşyalar", items)
             .setTimestamp()
@@ -35,6 +35,6 @@ exports.help = {
 };
 
 exports.conf = {
-    aliases: ["çanta"],
+    aliases: ["çanta", "env"],
     cooldown: 5
 }

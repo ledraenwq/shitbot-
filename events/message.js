@@ -56,15 +56,15 @@ try {
         return message.channel.send("sjsjsjsj")
     }
 
-    if (message.content.includes == "qwe") {
+    if (message.content.includes("qwe")) {
       let qwes = ["qqwe:QwEq:WeQWQWEqwe", "q:WqEqwqwewqQ:w:eW:Qe", "qw:eqw:E:q:e:wqweqweqweQWe"]
       let qwe = qwes[Math.floor(Math.random() * qwes.length)]
       return message.channel.send(qwe)
     }
 
-    if (message.content.includes == "hmmmm") {
+    if (message.content.includes("hmmmm")) {
 
-      return message.channel.send("<a:thinkhfjkld:403727203864412161>")
+      return message.channel.send("<a:abo:753961981651714088>")
     }
 
 
