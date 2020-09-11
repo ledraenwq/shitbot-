@@ -16,6 +16,8 @@ Botun hazır halini [buradan](https://discord.com/oauth2/authorize?client_id=723
 
 ---
 
+Önce bu projeyi indirmeniz gerek.
+
 _Terminali açmadan önce node.js'nin **tavsiye edilen** sürümü indiriliyse onu kaldırıp **son sürümünü** indir. Bu "database"i sağlıklı bir şekilde indirmen için çok önemli._
 
 **İlk adımı tamamladıktan sonra ctrl+" diyerek terminali aç, burada bazı eklentileri ekleyeceksin**
@@ -28,7 +30,7 @@ _Terminali açmadan önce node.js'nin **tavsiye edilen** sürümü indiriliyse o
 
 #### Üçüncü adım;
 
-.env adında bir dosya aç ve buraya BOT_TOKEN=<token> yaz
+[Bu videoyu](https://www.youtube.com/watch?v=24zueyPoHMQ) izleyin
 Botun varsayılan prefixi "b!"dir ve istersen bunu [config.json](https://github.com/cinoez/shitbot/blob/master/config.json)'dan değiştirebilirsin
 
 ## Lisans
