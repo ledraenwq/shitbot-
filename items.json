@@ -1,0 +1,21 @@
+{
+    "Kazma": {
+        "ad": "Kazma",
+        "tür": "Eşya",
+        "fiyat": "1000",
+        "açıklama": "`b!mc` komutunu kullanmanı sağlar"
+    },
+    "Telefon": {
+        "ad": "Telefon",
+        "tür": "Eşya",
+        "fiyat": "3400",
+        "açıklama": "`b!telefon` komutunu kullanmanı sağlar"
+    },
+    "Film": {
+        "ad": "Film",
+        "tür": "Tek kullanımlık",
+        "fiyat": "300",
+        "açıklama": "Bir film önerisi"
+    }
+
+}

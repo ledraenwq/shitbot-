@@ -34,7 +34,7 @@ try {
         }))
     }
 
-    if (message.content == "sa") {
+    if (message.content.toLowerCase() == "sa") {
       const msg = await message.channel.send("as = ananı s...")
       wait(2500)
       msg.edit("Şaka şaka").then(a => {
@@ -56,13 +56,13 @@ try {
         return message.channel.send("sjsjsjsj")
     }
 
-    if (message.content.includes("qwe")) {
+    if (message.content.toLowerCase() == "qwe") {
       let qwes = ["qqwe:QwEq:WeQWQWEqwe", "q:WqEqwqwewqQ:w:eW:Qe", "qw:eqw:E:q:e:wqweqweqweQWe"]
       let qwe = qwes[Math.floor(Math.random() * qwes.length)]
       return message.channel.send(qwe)
     }
 
-    if (message.content.includes("hmmmm")) {
+    if (message.content.toLowerCase().includes("hmmmm")) {
 
       return message.channel.send("<a:abo:753961981651714088>")
     }

@@ -16,8 +16,8 @@ function wait(ms) {
 exports.run = async (bot, message, args, author) => {
   try {
     let item = db.get(message.author.id, "Kazma")
-    if (item) {
-
+    if (!item) return message.channel.send("Kazman yok mal")
+    else {
       const elmas = "<:elmas:744585308024340520>";
       const stone = "<:stone:744587273898557521>";
       const lava = "<:lava:744593055444893701>";
@@ -178,8 +178,6 @@ exports.run = async (bot, message, args, author) => {
         })
       }
       msgs.edit("Şansını kaybettin")
-    } else {
-      message.channel.send("Kazman yok mal")
     }
   } catch (e) {
     message.channel.send(e.message)

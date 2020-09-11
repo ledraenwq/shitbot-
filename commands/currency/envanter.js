@@ -13,7 +13,7 @@ function wait(ms) {
 exports.run = async (client, message, args) => {
     try {
         let user = message.author
-        let items = db.get(user.id)
+        let items = db.get(message.author.id)
         if (items === null) items = "Bu kullanıcı fakir (hiç bir şeyi yok abo)"
 
         let embed = new Discord.MessageEmbed()
