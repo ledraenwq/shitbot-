@@ -55,7 +55,7 @@ module.exports = async (client, message) => {
   }
 
   if (message.content == "qwe") {
-    let qwes = ["qwe:QwEq:WeQWQWEqwe", "q:WEqwqwewqQ:w:eW:Qe", "qw:eqw:E:q:e:wqweqweqweQWe"]
+    let qwes = ["qqwe:QwEq:WeQWQWEqwe", "q:WEqwqwewqQ:w:eW:Qe", "qw:eqw:E:q:e:wqweqweqweQWe"]
     let qwe = qwes[Math.floor(Math.random() * qwes.length)]
     return message.channel.send(qwe)
   }
