@@ -18,7 +18,7 @@ Botun hazır halini [buradan](https://discord.com/oauth2/authorize?client_id=723
 
 Önce bu projeyi indirmeniz gerek.
 
-_Terminali açmadan önce node.js'nin **tavsiye edilen** sürümü indiriliyse onu kaldırıp **son sürümünü** indir. Bu "database"i sağlıklı bir şekilde indirmen için çok önemli._
+_Terminali açmadan önce node.js'nin **tavsiye edilen** sürümü indiriliyse onu kaldırıp **son sürümünü** indir. Bu "database"i sağlıklı bir şekilde indirmen için çok önemli._ ([nodeJS](https://nodejs.org/en/))
 
 **İlk adımı tamamladıktan sonra ctrl+" diyerek terminali aç, burada bazı eklentileri ekleyeceksin**
 | ----------------------------------------------------------------------------------------------- |
