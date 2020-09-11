@@ -1,12 +1,14 @@
 ## Made by @cinoez #9999
 
-_Bu proje discord.js kütüphanesini kullanan bir "bot"tur kısaca yapabildiği şeylerden bahsedeyim_
-
-1- Discord mesajlaşma uygulamasında mesajları bekleyebilir ve mesajın içeriğine göre yanıt verebilir.
-
-2- Mesajın başına bir sembol/kelime/ikisinin karışımı olduğu sürece cevap verebilir
-
-3- İçinde ufak bir 2D minecraft oyunu vardır ve Discord içi oynanabilir.
+| **Öne çıkan komutlar** |                             **Açıklama**                             |       **Kullanım** |
+| :--------------------- | :------------------------------------------------------------------: | -----------------: |
+| Kumar                  | 3 emojiden birini seçer ve buna göre kazanıp kazanmadığının belirler |   b!kumar\<miktar> |
+| Kazı                   |                Minecraft maden kazma ama discord içi                 |             b!kazı |
+| Cüzdan                 |        Kasanda ve cüzdanında ne kadar para olduğunu gösterir         |       b!bal\[kişi] |
+| Günlük                 |                         Günde bir para verir                         |           b!günlük |
+| Saatlik                |                        Saatte bir para verir                         |          b!saatlik |
+| Kasala                 |                   Cüzdanındaki parayı kasaya alır                    | b!kasala \<miktar> |
+| Geri al                |                   Kasandaki parayı cüzdana aktarır                   | b!gerial \<miktar> |
 
 Not: Bütün komutlar b!yardım diyerek okunulabilir.
 
