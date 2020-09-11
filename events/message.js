@@ -47,7 +47,17 @@ module.exports = async (client, message) => {
   }
 
   if (message.content == "31") {
-    return message.channel.send("Komikmiş aga")
+    let chance = Math.ceil(Math.random() * 2)
+    if (chance == 1)
+      return message.channel.send("Komikmiş aga")
+    else
+      return message.channel.send("sjsjsjsj")
+  }
+
+  if (message.content == "qwe") {
+    let qwes = ["qwe:QwEq:WeQWQWEqwe", "q:WEqwqwewqQ:w:eW:Qe", "qw:eqw:E:q:e:wqweqweqweQWe"]
+    let qwe = qwes[Math.floor(Math.random() * qwes.length)]
+    return message.channel.send(qwe)
   }
 
 
