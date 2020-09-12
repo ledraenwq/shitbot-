@@ -56,20 +56,25 @@ exports.run = async (bot, message, args) => {
                         let author1 = message.author
                         let msgs = await user.send("Açmak için `aç` kapamak için `k` de")
                         let filter = m => m.author.id;
-                        let collector = new Discord.MessageCollector(msgs.channel, filter, 1)
-                        collector.on("collect", (mes, col) => {
-                            if (mes.content.toLowerCase() == "aç") {
+                        msgs.channel.awaitMessages(filter, {
+                            max: 1,
+                            time: 30000
+                        }).then((collected) => {
+                            if (collected.first().content.toLowerCase() == "aç") {
                                 message.channel.send(`${user} telefonu açtı.`)
 
                                 user.send(`${author1} sana "${msgcontent}" diyor`)
 
 
-                            } else if (mes.content.toLowerCase() == "k") {
+                            } else if (collected.first().content.toLowerCase() == "k") {
                                 const attachment = new Discord.MessageAttachment("./abo.mp4")
                                 user.send(attachment)
                                 message.channel.send(`${user} telefonu açmadı ve cezasını çekti`)
                             }
                         })
+
+
+
 
 
 
@@ -102,6 +107,6 @@ exports.help = {
 };
 
 exports.conf = {
-    aliases: ["tel"],
+    aliases: ["telf"],
     cooldown: ""
 }
