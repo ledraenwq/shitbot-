@@ -1,7 +1,16 @@
 const Discord = require("discord.js")
 const db = require("quick.db")
 const ms = require("parse-ms")
-const Canvas = require("canvas")
+
+
+
+function wait(ms) {
+    var d = new Date();
+    var d2 = null;
+    do {
+        d2 = new Date();
+    } while (d2 - d < ms);
+}
 
 exports.run = async (bot, message, args) => {
     try {
@@ -11,6 +20,7 @@ exports.run = async (bot, message, args) => {
         if (item) {
             let user = message.mentions.members.first()
             let msgcontent = args.splice(1).join(" ")
+            if (!user) return message.channel.send("Telefonu kim için kullanacaksın?")
 
             message.channel.send("Bu kişiyi aramak istiyorsan `ara` mesaj atmak istiyorsan `mesaj` de")
 
@@ -21,11 +31,48 @@ exports.run = async (bot, message, args) => {
                 })
                 .then(async (collected) => {
                     if (collected.first().content.toLowerCase() == 'ara') {
-                        let canvas = Canvas.createCanvas(620, 1234)
-                        const ctx = canvas.getContext("2d")
-                        const backround = await Canvas.loadImage("./calltemp.png")
-                        var text = ctx.measureText(`${message.author.username} seni arıyor`)
-                        message.channel.type === ("dm") + user.channel.send(canvas)
+                        let msg = await user.send(`${message.author} seni arıyor`)
+                        for (let i = 0; i < 5; i++) {
+
+                            msg.edit(`${message.author} seni arıyor.`)
+                                .then(abc => {
+                                    msg.edit(`${message.author} seni arıyor..`)
+
+                                }).then(ab => {
+                                    msg.edit(`${message.author} seni arıyor...`)
+
+                                }).then(() => {
+                                    msg.edit(`${message.author} seni arıyor`)
+                                })
+
+                        }
+                        message.channel.send(`${user} aranıyor...`)
+
+
+
+
+
+
+                        let author1 = message.author
+                        let msgs = await user.send("Açmak için `aç` kapamak için `k` de")
+                        let filter = m => m.author.id;
+                        let collector = new Discord.MessageCollector(msgs.channel, filter, 1)
+                        collector.on("collect", (mes, col) => {
+                            if (mes.content.toLowerCase() == "aç") {
+                                message.channel.send(`${user} telefonu açtı.`)
+
+                                user.send(`${author1} sana "${msgcontent}" diyor`)
+
+
+                            } else if (mes.content.toLowerCase() == "k") {
+                                const attachment = new Discord.MessageAttachment("./abo.mp4")
+                                user.send(attachment)
+                                message.channel.send(`${user} telefonu açmadı ve cezasını çekti`)
+                            }
+                        })
+
+
+
                     } else if (collected.first().content.toLowerCase() == 'mesaj') {
 
                         message.channel.type === ("dm") + user.send(msgcontent)
