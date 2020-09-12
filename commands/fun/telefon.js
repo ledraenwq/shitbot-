@@ -81,7 +81,7 @@ exports.run = async (bot, message, args) => {
                     } else if (collected.first().content.toLowerCase() == 'mesaj') {
 
                         message.channel.type === ("dm") + user.send(msgcontent)
-                        message.channel.send("Başarıyla gönderildi.😃👍")
+                        message.channel.send("Başarıyla gönderildi😃👍")
                     } else if (collected.first().content.toLowerCase() == 'iptal') {
                         return message.channel.send("İptal edildi.")
                     } else {
