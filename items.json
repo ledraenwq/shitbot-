@@ -13,7 +13,7 @@
     },
     "Film": {
         "ad": "Film",
-        "tür": "Tek kullanımlık",
+        "tür": "Buradan almayın direk `b!film` diyin",
         "fiyat": "300",
         "açıklama": "Bir film önerisi"
     }

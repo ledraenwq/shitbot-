@@ -77,7 +77,13 @@ exports.run = async (bot, message, args) => {
 
                         message.channel.type === ("dm") + user.send(msgcontent)
                         message.channel.send("Başarıyla gönderildi.😃👍")
+                    } else if (collected.first().content.toLowerCase() == 'iptal') {
+                        return message.channel.send("İptal edildi.")
+                    } else {
+                        return message.channel.send("Bu bir seçenek değil")
                     }
+                }).catch(() => {
+                    return message.channel.send("30 sn içinde cevap vermediğin için iptal edildi")
                 })
         } else {
             message.channel.send("Telefonun yok lol")
@@ -96,6 +102,6 @@ exports.help = {
 };
 
 exports.conf = {
-    aliases: ["add"],
+    aliases: ["tel"],
     cooldown: ""
 }
