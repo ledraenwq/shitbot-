@@ -75,7 +75,7 @@ exports.run = async (bot, message, args, author) => {
           }
           m += "\n";
         }
-        let msg = await message.channel.send(m);
+        let msgs = await message.channel.send("`W | A | S | D` kullan", m);
       }
 
       let simdiX = 50;
@@ -114,9 +114,12 @@ exports.run = async (bot, message, args, author) => {
         }
         m += "\n";
       }
+
+
+      message.channel.send("`W | A | S | D` kullanarak hareket ettir. `esc` diyerek iptal et")
       let msgs = await message.channel.send(m);
-      let counter = 0;
-      let filter = (m) => m.author.id;
+
+      let filter = msg => msg.author.id = message.author.id
       const collector = new Discord.MessageCollector(
         message.channel,
         filter
@@ -124,11 +127,11 @@ exports.run = async (bot, message, args, author) => {
 
       collector.on("collect", (message) => {
         if (message.content.toLowerCase() == "w") {
-          simdiX--;
+          simdiX++;
           message.delete;
 
         } else if (message.content.toLowerCase() == "s") {
-          simdiX++;
+          simdiX--;
           message.delete();
         } else if (message.content.toLowerCase() == "d") {
           simdiY--;
@@ -139,17 +142,14 @@ exports.run = async (bot, message, args, author) => {
         } else if (message.content.toLowerCase() == "esc") {
           collector.stop();
 
-          msgs.edit("İptal ettim")
-            .then(() => {
-              wait(2500)
-              message.channel.bulkDelete(15)
-            })
+          msgs.delete()
+          message.channel.send("İptal ettim")
+          collector.stop()
 
 
         } else {
-          msgs.edit("Seçeneklerden birini söylemediğin için iptal ettim")
           collector.stop()
-
+          message.channel.send("Seçeneklerden birini söylemediğin için iptal ettim")
         }
 
         tasi(simdiX, simdiY, 5, 5);
@@ -170,8 +170,9 @@ exports.run = async (bot, message, args, author) => {
           }
           m1 += "\n";
         }
+
         msgs.edit(m1);
-      });
+      })
 
 
     } else {
@@ -190,6 +191,6 @@ exports.help = {
 };
 
 exports.conf = {
-  aliases: ["mine", "mc", "mcd"],
+  aliases: ["mine", "mc", "mcdm"],
   cooldown: 10,
 };
