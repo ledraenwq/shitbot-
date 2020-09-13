@@ -80,6 +80,8 @@ exports.run = async (bot, message, args, author) => {
 
       let simdiX = 50;
       let simdiY = 50;
+      let kazmaX = 2;
+      let kazmaY = 2;
       for (let i = 0; i < BuyukEkranXX; i++) {
         for (var j = 0; j < BuyukEkranYY; j++) {
           Olasilik = Math.random() * 100;
@@ -97,22 +99,29 @@ exports.run = async (bot, message, args, author) => {
           KucukEkran[i][j] = BuyukEkran[simdiX + i][simdiY + j];
         }
       }
+      //myPrint
       let m = "";
       for (let i = 0; i < xx; i++) {
         for (var j = 0; j < yy; j++) {
-          switch (KucukEkran[i][j]) {
-            case 1:
-              m += elmas;
-              break;
-            case 2:
-              m += lava;
-              break;
-            case 3:
-              m += stone;
-              break;
+          if (i === kazmaX && j === kazmaY) {
+            m += pick
+          } else {
+
+            switch (KucukEkran[i][j]) {
+              case 1:
+                m += elmas;
+                break;
+              case 2:
+                m += lava;
+                break;
+              case 3:
+                m += stone;
+                break;
+            }
           }
         }
         m += "\n";
+
       }
 
 
@@ -127,17 +136,32 @@ exports.run = async (bot, message, args, author) => {
 
       collector.on("collect", (message) => {
         if (message.content.toLowerCase() == "w") {
-          simdiX++;
+          kazmaX--;
           message.delete;
-
+          if (kazmaX === -1) {
+            kazmaX = 4
+            simdiX = simdiX - 5
+          }
         } else if (message.content.toLowerCase() == "s") {
-          simdiX--;
+          kazmaX++;
           message.delete();
+          if (kazmaX === 5) {
+            kazmaX = 0
+            simdiX = simdiX + 5
+          }
         } else if (message.content.toLowerCase() == "d") {
-          simdiY--;
+          kazmaY++;
+          if (kazmaY === 5) {
+            kazmaY = 0
+            simdiY = simdiY + 5
+          }
           message.delete();
         } else if (message.content.toLowerCase() == "a") {
-          simdiY++;
+          kazmaY--;
+          if (kazmaY === -1) {
+            kazmaY = 4
+            simdiY = simdiY - 5
+          }
           message.delete();
         } else if (message.content.toLowerCase() == "esc") {
           collector.stop();
@@ -152,25 +176,37 @@ exports.run = async (bot, message, args, author) => {
           message.channel.send("Seçeneklerden birini söylemediğin için iptal ettim")
         }
 
+
         tasi(simdiX, simdiY, 5, 5);
         let m1 = " ";
         for (let c = 0; c < xx; c++) {
           for (var b = 0; b < yy; b++) {
-            switch (KucukEkran[c][b]) {
-              case 1:
-                m1 += elmas;
-                break;
-              case 2:
-                m1 += lava;
-                break;
-              case 3:
-                m1 += stone;
-                break;
+            if (c === kazmaX && b === kazmaY) {
+              m1 += pick
+            } else {
+              switch (KucukEkran[c][b]) {
+                case 1:
+                  m1 += elmas;
+                  break;
+                case 2:
+                  m1 += lava;
+                  break;
+                case 3:
+                  m1 += stone;
+                  break;
+              }
             }
           }
           m1 += "\n";
         }
-
+        if (KucukEkran[kazmaX][kazmaY] === 1) {
+          db.push(message.author.id, "Elmas")
+        } else if (KucukEkran[kazmaX][kazmaY] === 2) {
+          db.delete(message.author.id)
+          db.delete(`money_${message.author.id}`)
+        } else {
+          db.push(message.author.id, "Taş")
+        }
         msgs.edit(m1);
       })
 
@@ -191,6 +227,6 @@ exports.help = {
 };
 
 exports.conf = {
-  aliases: ["mine", "mc", "mcdm"],
+  aliases: ["mine", "mc", "mcdd"],
   cooldown: 10,
 };
