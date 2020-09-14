@@ -177,6 +177,17 @@ exports.run = async (bot, message, args, author) => {
           collector.stop()
           message.channel.send("Seçeneklerden birini söylemediğin için iptal ettim")
         }
+        if (KucukEkran[kazmaX][kazmaY] === 1) {
+
+          KucukEkran[kazmaX][kazmaY] = 3
+          BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 3;
+          let items = `**Elmas<:Diamond:755024597711323136>** \nBiriktirileblir - 250 000 `
+          db.push(message.author.id, items)
+        } else if (KucukEkran[kazmaX][kazmaY] === 2) {
+          collector.stop()
+          db.delete(message.author.id)
+          message.channel.send("Lava düştüğün için öldün, çantanı yaktın")
+        }
 
 
         tasi(simdiX, simdiY, 5, 5);
@@ -204,15 +215,7 @@ exports.run = async (bot, message, args, author) => {
           }
           m1 += "\n";
         }
-        if (KucukEkran[kazmaX][kazmaY] === 1) {
-          let items = `**Elmas<:Diamond:755024597711323136>** \nBiriktirileblir - 250 000 `
-          db.push(message.author.id, items)
-          KucukEkran[kazmaX][kazmaY] = 3
-        } else if (KucukEkran[kazmaX][kazmaY] === 2) {
-          collector.stop()
-          db.delete(message.author.id)
-          message.channel.send("Lava düştüğün için öldün, çantanı yaktın")
-        }
+
         msgs.edit(m1);
       })
 
@@ -233,6 +236,6 @@ exports.help = {
 };
 
 exports.conf = {
-  aliases: ["mine", "mc"],
+  aliases: ["mine", "mcdd"],
   cooldown: 10,
 };
