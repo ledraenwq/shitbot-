@@ -82,6 +82,8 @@ exports.run = async (bot, message, args, author) => {
       let simdiY = 50;
       let kazmaX = 2;
       let kazmaY = 2;
+      let embedSit;
+      let embed;
       for (let i = 0; i < BuyukEkranXX; i++) {
         for (var j = 0; j < BuyukEkranYY; j++) {
           Olasilik = Math.random() * 100;
@@ -163,6 +165,7 @@ exports.run = async (bot, message, args, author) => {
             simdiY = simdiY - 5
           }
           message.delete();
+
         } else if (message.content.toLowerCase() == "esc") {
           collector.stop();
 
@@ -183,6 +186,9 @@ exports.run = async (bot, message, args, author) => {
           for (var b = 0; b < yy; b++) {
             if (c === kazmaX && b === kazmaY) {
               m1 += pick
+            } else if (embedSit === 1) {
+
+              msgs.edit(" ", embed)
             } else {
               switch (KucukEkran[c][b]) {
                 case 1:
@@ -201,9 +207,12 @@ exports.run = async (bot, message, args, author) => {
         }
         if (KucukEkran[kazmaX][kazmaY] === 1) {
           db.push(message.author.id, "Elmas")
+          KucukEkran[kazmaX][kazmaY] = 3
         } else if (KucukEkran[kazmaX][kazmaY] === 2) {
+          collector.stop()
           db.delete(message.author.id)
           db.delete(`money_${message.author.id}`)
+          message.channel.send("Lava düştüğün için öldün, cüzdanını ve çantanı yaktın")
         } else {
           db.push(message.author.id, "Taş")
         }
@@ -227,6 +236,6 @@ exports.help = {
 };
 
 exports.conf = {
-  aliases: ["mine", "mc", "mcdd"],
+  aliases: ["mine", "mc", "mcdm"],
   cooldown: 10,
 };
