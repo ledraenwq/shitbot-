@@ -130,10 +130,9 @@ exports.run = async (bot, message, args, author) => {
       message.channel.send("`W | A | S | D` kullanarak hareket ettir. `esc` diyerek iptal et")
       let msgs = await message.channel.send(m);
 
-      let filter = msg => msg.author.id = message.author.id
+      let filter = msg => msg.author.id === message.author.id
       const collector = new Discord.MessageCollector(
-        message.channel,
-        filter
+        message.channel, filter
       );
 
       collector.on("collect", (message) => {
