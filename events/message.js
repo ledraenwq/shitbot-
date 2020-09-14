@@ -1,5 +1,6 @@
 try {
 
+
   const Discord = require("discord.js"),
     cooldowns = new Discord.Collection(),
     db = require("quick.db");
