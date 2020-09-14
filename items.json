@@ -1,21 +1,35 @@
 {
     "Kazma": {
-        "ad": "Kazma",
+        "ad": "Kazma<:pickaxe:744606156156174496>",
         "tür": "Eşya",
         "fiyat": "1000",
+        "alt": "kazma",
+        "satış": "615",
         "açıklama": "`b!mc` komutunu kullanmanı sağlar"
     },
     "Telefon": {
-        "ad": "Telefon",
+        "ad": "Telefon\\📱",
         "tür": "Eşya",
         "fiyat": "3400",
+        "alt": "telefon",
+        "satış": "1562",
         "açıklama": "`b!telefon` komutunu kullanmanı sağlar"
     },
     "Film": {
-        "ad": "Film",
+        "ad": "Film\\🎬",
         "tür": "Buradan almayın direk `b!film` diyin",
         "fiyat": "300",
+        "alt": "film",
+        "satış": "Satılamaz",
         "açıklama": "Bir film önerisi"
+    },
+    "Elmas": {
+        "ad": "Elmas<:Diamond:755024597711323136>",
+        "tür": "Biriktirileblir",
+        "fiyat": "500000",
+        "alt": "elmas",
+        "satış": "250000",
+        "açıklama": "Sadece satıp para kazanabilirsin"
     }
 
 }

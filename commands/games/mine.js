@@ -87,7 +87,7 @@ exports.run = async (bot, message, args, author) => {
       for (let i = 0; i < BuyukEkranXX; i++) {
         for (var j = 0; j < BuyukEkranYY; j++) {
           Olasilik = Math.random() * 100;
-          if (Olasilik > 0 && Olasilik < 5) {
+          if (Olasilik > 0 && Olasilik < 1) {
             BuyukEkran[i][j] = 1;
           } else if (Olasilik >= 5 && Olasilik < 30) {
             BuyukEkran[i][j] = 2;
@@ -206,13 +206,13 @@ exports.run = async (bot, message, args, author) => {
           m1 += "\n";
         }
         if (KucukEkran[kazmaX][kazmaY] === 1) {
-          db.push(message.author.id, "Elmas")
+          let items = `**Elmas<:Diamond:755024597711323136>** \nBiriktirileblir - 250 000 `
+          db.push(message.author.id, items)
           KucukEkran[kazmaX][kazmaY] = 3
         } else if (KucukEkran[kazmaX][kazmaY] === 2) {
           collector.stop()
           db.delete(message.author.id)
-          db.delete(`money_${message.author.id}`)
-          message.channel.send("Lava düştüğün için öldün, cüzdanını ve çantanı yaktın")
+          message.channel.send("Lava düştüğün için öldün, çantanı yaktın")
         }
         msgs.edit(m1);
       })
@@ -234,6 +234,6 @@ exports.help = {
 };
 
 exports.conf = {
-  aliases: ["mine", "mc", "mcdm"],
+  aliases: ["mine", "mc", "mcdd"],
   cooldown: 10,
 };

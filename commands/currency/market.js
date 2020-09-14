@@ -31,7 +31,7 @@ exports.run = async (client, message, args) => {
 
                 for (let c in items) {
                     if (categories[i] === items[c].ad) {
-                        tempDesc += `**Tür:** ${items[c].tür}\n **Fiyat:** ${items[c].fiyat} \n **Açıklama:** ${items[c].açıklama}\n`
+                        tempDesc += `**Tür:** ${items[c].tür}\n**Fiyat:** ${items[c].fiyat} \n**Satış Fiyatı:** ${items[c].satış} \n**Açıklama:** ${items[c].açıklama}\n`
                     }
                 }
 

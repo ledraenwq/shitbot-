@@ -5,19 +5,26 @@ const default_prefix = config.default_prefix
 const fs = require("fs")
 
 const items = JSON.parse(fs.readFileSync("items.json", "utf8"))
-
 exports.run = async (client, message, args) => {
     let money = db.fetch(`money_${message.author.id}`)
     try {
         let itemName = ""
+        let altName = ""
         let itemPrice = 0
         let itemDesc = ""
+        let itemCat = ""
+        let sellPrice = ""
+
 
         for (let i in items) {
-            if (args.join(" ").trim().toLowerCase() === items[i].ad.toLowerCase()) {
+            if (args.join(" ").trim() === items[i].alt) {
                 itemName = items[i].ad;
+                altName = items[i].alt;
                 itemPrice = parseInt(items[i].fiyat);
                 itemDesc = items[i].açıklama;
+                itemCat = items[i].tür;
+                sellPrice = items[i].satış;
+
             }
         }
         let KDV = itemPrice * 10 / 100
@@ -28,22 +35,21 @@ exports.run = async (client, message, args) => {
             return message.channel.send(`Yeterli paran yok, ${KDVDahil - money} daha biriktirmen gerek<:uzucu:725952785048272927>`)
 
         db.subtract(`money_${message.author.id}`, KDVDahil)
-        message.channel.send(`${itemPrice} liraya \`${itemName}\` aldın, KDV dahil ${KDVDahil}`)
-
-        if (itemName == "Kazma") db.push(message.author.id, "Kazma")
-        if (itemName == "Telefon") db.push(message.author.id, "Telefon")
+        message.channel.send(`${itemPrice} liraya "${itemName}" aldın, KDV dahil ${KDVDahil}`)
+        let desc = `**${itemName}** \n${itemCat} - ${sellPrice}`
+        db.push(message.author.id, desc)
 
     } catch (e) {
-        message.channel.send(e.message)
+        message.channel.send("Hata")
     }
 
 }
 
 exports.help = {
-    name: "al",
-    description: "Marketteki eşyaları atar.",
+    name: "alll",
+    description: "Marketteki eşyaları satın al.",
     usage: "b!market [komut]",
-    example: "b!help kazma"
+    example: "b!al kazma"
 };
 
 exports.conf = {

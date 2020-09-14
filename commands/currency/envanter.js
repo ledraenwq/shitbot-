@@ -10,6 +10,9 @@ function wait(ms) {
     } while (d2 - d < ms);
 }
 
+
+
+
 exports.run = async (client, message, args) => {
     try {
         let user = message.author
@@ -19,7 +22,7 @@ exports.run = async (client, message, args) => {
         let embed = new Discord.MessageEmbed()
             .setTitle(`${user.username}'in envanteri`)
             .setColor("RANDOM")
-            .addField("Eşyalar", items)
+            .setDescription(items)
             .setTimestamp()
         message.channel.send(embed)
     } catch (e) {
@@ -35,6 +38,6 @@ exports.help = {
 };
 
 exports.conf = {
-    aliases: ["çanta", "env"],
+    aliases: ["çanta", "envv"],
     cooldown: 5
 }
