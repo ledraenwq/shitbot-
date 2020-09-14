@@ -234,6 +234,6 @@ exports.help = {
 };
 
 exports.conf = {
-  aliases: ["mine", "mc", "mcdd"],
+  aliases: ["mine", "mc"],
   cooldown: 10,
 };

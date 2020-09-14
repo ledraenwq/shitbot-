@@ -38,6 +38,6 @@ exports.help = {
 };
 
 exports.conf = {
-    aliases: ["çanta", "envv"],
+    aliases: ["çanta", "env"],
     cooldown: 5
 }
