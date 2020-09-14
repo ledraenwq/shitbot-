@@ -213,8 +213,6 @@ exports.run = async (bot, message, args, author) => {
           db.delete(message.author.id)
           db.delete(`money_${message.author.id}`)
           message.channel.send("Lava düştüğün için öldün, cüzdanını ve çantanı yaktın")
-        } else {
-          db.push(message.author.id, "Taş")
         }
         msgs.edit(m1);
       })
