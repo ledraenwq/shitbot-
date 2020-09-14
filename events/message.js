@@ -68,6 +68,27 @@ try {
     }
 
 
+    if (message.content.toLowerCase().includes("amk")) {
+
+      return message.channel.send("amk")
+    }
+
+
+    if (message.content.toLowerCase().includes("anneni sikeyim")) {
+
+      return message.channel.send("ben de senin🙂")
+    }
+
+
+    if (message.content.toLowerCase().includes("bruh")) {
+      let chance = Math.ceil(Math.random() * 2)
+      if (chance === 1)
+        return message.channel.send(`Bruh Moment öyle bir andır ki: Denizler ikiye ayrılır,Dağ|ar yerinden oynar,KasırgaIar Savrulur,Vo|kan|ar patlar, Gök gürler,Yer sarsılır,AnaIar ağlar,Çocuk|ar korkanlnsanlar öfkeden ve nefretten patlar! Dünyaya müthiş bir korku yayılır... Gökyüzü kararır... Deniz kana dönüşür... İşte Bruh Moment anı böyle bir andır... Lakin bruh anı vibe check tarafından öldürülmüştür.. İnsanların kurtarıcısı vibe check olmuştur... Vibe check Tanrının insanlığa bir hediyesi oldu. Tanrılar insanlara 2. bir şans verdi. Kendilerini düzeltme şansı... Yaptıkları günahlardan kurtulma şansı... Bruh moment efsanesi eskiden duyulmuşturArtık pek bir önemi kalmadı çünkü bruh moment ortadan kalktı.. Vibe checkler sayesinde insanlık Bruh moment anından kurtuldu ve sevinç çığlıkları attı: "Yaşasın! Bruh moment artık yok!"."Yaşasın! Vibe check!" Bruh moment artık insanlığa etki edemiyecekti. Fakat bu onun bir efsane, bir destan olduğu gerçeğini değiştirmiyordu. İnsanlar Bruh moment anına: Yiğidi öldür ama hakkını yeme dedi ve günümüze kadar onun hakkında hiçbir bilgiyle oynayıp, değiştirmedi. Bruh moment Covid-19'dan bile daha beter etmişti insanlığı... Kara vebadan daha arsızdı... Uzaylılar kadar gelişmişti lakin oda bu dünyanın bir ürünüydü.. Bu dünyanın pis tarafının bir ürünü... Tanrılar Bruh moment anını insanları cezalandırmak için gönderdi... Sonrada insanlığı bruh anından kurtardı“ İnsanlar dersini almıştı.. Ve bir daha yaptıkları günahları tekrar etmediler.. Kurbanlar verip, Tanrıdan af dilediler.. Tanrıda Vibe checki onlara gönderdi... Ama olan Bruh moment anına olmuştu... Bruh moment öfke ile doluydu.. Tanrılar bu sefer bruh moment anını insanlara düşman olduğu için cezalandırıyordu.. Bruh`)
+    } else if (chance === 2) {
+      return message.channel.send("Bruuuuuuhh")
+    }
+
+
     if (message.content.includes(["@everyone"]))
       if (message.member.hasPermission("MANAGE_GUILD")) return
     else {
