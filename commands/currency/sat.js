@@ -49,7 +49,7 @@ exports.run = async (client, message, args) => {
 };
 
 exports.help = {
-    name: "satt",
+    name: "sat",
     description: "Çantandaki eşyaları sat",
     usage: "b!sat [eşya]",
     example: "b!sat elmas",
