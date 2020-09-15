@@ -19,6 +19,7 @@ exports.run = async (client, message, args) => {
         let items = db.get(user.id)
         if (items === null) items = "Bu kullanıcı fakir (hiç bir şeyi yok abo)"
 
+
         let embed = new Discord.MessageEmbed()
             .setTitle(`${user.username}'in envanteri`)
             .setColor("RANDOM")
@@ -38,6 +39,6 @@ exports.help = {
 };
 
 exports.conf = {
-    aliases: ["çanta", "env"],
+    aliases: ["çanta", "enva"],
     cooldown: 5
 }

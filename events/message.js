@@ -65,7 +65,7 @@ try {
 
     if (message.content.toLowerCase().includes("hmmmm")) {
 
-      return message.channel.send("<a:abo:753961981651714088>")
+      return message.channel.send("<a:think:755350138163167272>")
     }
 
 

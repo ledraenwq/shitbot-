@@ -15,9 +15,10 @@ function wait(ms) {
 exports.run = async (bot, message, args) => {
     try {
 
-
-        let item = db.get(message.author.id, "Telefon")
-        if (item) {
+        let desc = "**Telefon\\📱** \nEşya - 1562"
+        let items = db.get(message.author.id)
+        if (items === null) return message.channel.send("Kazman yok lol")
+        if (items.includes(desc)) {
             let user = message.mentions.members.first()
             let msgcontent = args.splice(1).join(" ")
             if (!user) return message.channel.send("Telefonu kim için kullanacaksın?")
