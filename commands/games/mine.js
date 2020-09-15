@@ -39,6 +39,7 @@ exports.run = async (bot, message, args) => {
     let oldarray = db.get(message.author.id);
 
     let desc1 = '**Kazma<:pickaxe:744606156156174496>** \nEşya - 615';
+    if (oldarray === null) return message.channel.send("Kazman yok.")
     if (!oldarray.includes(desc1)) return message.channel.send("Kazman yok.");
 
 
