@@ -69,7 +69,7 @@ try {
     }
 
 
-    if (message.content.toLowerCase().includes("amk")) {
+    if (message.content.toLowerCase() == "amk") {
 
       return message.channel.send("amk")
     }

@@ -4,6 +4,7 @@ const talkedRecently = new Set();
 const xx = 5;
 const yy = 5;
 const db = require("quick.db");
+const fs = require("fs")
 
 function wait(ms) {
   var d = new Date();
@@ -12,19 +13,37 @@ function wait(ms) {
     d2 = new Date();
   } while (d2 - d < ms);
 }
-
-exports.run = async (bot, message, args, author) => {
+const items = JSON.parse(fs.readFileSync("items.json", "utf8"))
+exports.run = async (bot, message, args) => {
   try {
+
+
+    let itemName = ""
+    let altName = ""
+    let itemPrice = 0
+    let itemDesc = ""
+    let itemCat = ""
+    let sellPrice = ""
+
+
+    for (let i in items) {
+      itemName = items[i].ad;
+      altName = items[i].alt;
+      itemPrice = parseInt(items[i].fiyat);
+      itemDesc = items[i].açıklama;
+      itemCat = items[i].tür;
+      sellPrice = items[i].satış;
+    }
+
+
     let item = db.get(message.author.id, "Kazma");
     if (item) {
       const elmas = "<:elmas:744585308024340520>";
       const stone = "<:stone:744587273898557521>";
       const lava = "<:lava:744593055444893701>";
       const pick = "<:pickaxe:744606156156174496>";
-      const arrows = ["⬅", "⬆", "⬇", "➡", "❌"];
-      let lastPlay = Date.now();
 
-      const maddeler = [elmas, stone, lava, pick];
+
 
       let KucukEkran = new Array(5).fill(0).map(() => new Array(5).fill(0));
 
@@ -181,8 +200,8 @@ exports.run = async (bot, message, args, author) => {
 
           KucukEkran[kazmaX][kazmaY] = 3
           BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 3;
-          let items = `**Elmas<:Diamond:755024597711323136>** \nBiriktirileblir - 250 000 `
-          db.push(message.author.id, items)
+          let desc = `**${itemName}** \n${itemCat} - ${sellPrice}`
+          db.push(message.author.id, desc)
         } else if (KucukEkran[kazmaX][kazmaY] === 2) {
           collector.stop()
           db.delete(message.author.id)

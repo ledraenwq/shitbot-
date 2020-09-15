@@ -17,26 +17,31 @@ exports.run = async (client, message, args) => {
     let money = db.fetch(`money_${message.author.id}`)
     try {
         let itemName = ""
+        let altName = ""
         let itemPrice = 0
-        let sellPrice = 0
         let itemDesc = ""
+        let itemCat = ""
+        let sellPrice = ""
 
         for (let i in items) {
             if (args.join(" ").trim().toLowerCase() === items[i].alt.toLowerCase()) {
-                itemName = items[i].alt;
+                itemName = items[i].ad;
+                altName = items[i].alt;
                 itemPrice = parseInt(items[i].fiyat);
-                sellPrice = parseInt(items[i].satış)
                 itemDesc = items[i].açıklama;
+                itemCat = items[i].tür;
+                sellPrice = items[i].satış;
             }
         }
         let item = db.get(message.author.id, itemName)
 
         if (itemName === "") return message.channel.send("Mal böyle bir eşya yok")
         if (!item) return message.channel.send("Bu eşya sende yok.")
-
-        db.push(message.author.id, " ")
+        let desc = `**${itemName}** \n${itemCat} - ${sellPrice}`
+        let oldarray = db.get(message.author.id)
+        db.set(message.author.id, oldarray.filter(d => d !== desc))
         db.add(`money_${message.author.id}`, sellPrice)
-        message.channel.send(`${sellPrice} liraya \`${itemName}\`'i sattın.`)
+        message.channel.send(`${sellPrice} liraya ${itemName}'i sattın.`)
 
 
     } catch (e) {
