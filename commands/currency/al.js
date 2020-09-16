@@ -35,7 +35,10 @@ exports.run = async (client, message, args) => {
         if (money < KDVDahil)
             return message.channel.send(`Yeterli paran yok, ${KDVDahil - money} daha biriktirmen gerek<:uzucu:725952785048272927>`)
         let desc = `**${itemName}** \n${itemCat} - ${sellPrice}`
-        if (item === null || !item.includes(desc)) {
+        if (item === null) {
+
+        }
+        if (!item.includes(desc)) {
             db.subtract(`money_${message.author.id}`, KDVDahil)
             message.channel.send(`${itemPrice} liraya "${itemName}" aldın, KDV dahil ${KDVDahil}`)
 
