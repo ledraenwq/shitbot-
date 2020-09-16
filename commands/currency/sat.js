@@ -4,11 +4,10 @@ const config = require("../../config.json");
 const default_prefix = config.default_prefix;
 const fs = require("fs");
 const message = require("../../events/message");
-const {
-    stringify
-} = require("querystring");
+
 
 const items = JSON.parse(fs.readFileSync("items.json", "utf8"));
+const ores = JSON.parse(fs.readFileSync("ores.json", "utf8"));
 
 exports.run = async (client, message, args) => {
     let money = db.fetch(`money_${message.author.id}`);
@@ -32,8 +31,21 @@ exports.run = async (client, message, args) => {
         }
         let oldarray = db.get(message.author.id);
 
+
+        if (itemName === "") {
+            for (let o in ores) {
+                if (args.join(" ").trim().toLowerCase() === ores[o].alt.toLowerCase()) {
+                    itemName = ores[o].ad;
+                    altName = ores[o].alt;
+                    itemPrice = parseInt(ores[o].fiyat);
+                    itemDesc = ores[o].açıklama;
+                    itemCat = ores[o].tür;
+                    sellPrice = ores[o].satış;
+                }
+            }
+            if (itemName === "") return message.channel.send("Mal böyle bi eşya yok")
+        }
         let desc = `**${itemName}** \n${itemCat} - ${sellPrice}`;
-        if (itemName === "") return message.channel.send("Mal böyle bir eşya yok");
         if (oldarray === null) return message.channel.send("Bu eşya sende yok")
         if (!oldarray.includes(desc)) return message.channel.send("Bu eşya sende yok.");
 

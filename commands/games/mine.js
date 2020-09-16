@@ -18,24 +18,6 @@ exports.run = async (bot, message, args) => {
   try {
 
 
-    let money = db.fetch(`money_${message.author.id}`);
-
-    let itemName = "";
-    let altName = "";
-    let itemPrice = 0;
-    let itemDesc = "";
-    let itemCat = "";
-    let sellPrice = "";
-
-    for (let i in items) {
-      itemName = items[i].ad;
-      altName = items[i].alt;
-      itemPrice = parseInt(items[i].fiyat);
-      itemDesc = items[i].açıklama;
-      itemCat = items[i].tür;
-      sellPrice = items[i].satış;
-
-    }
     let oldarray = db.get(message.author.id);
 
     let desc1 = '**Kazma<:pickaxe:744606156156174496>** \nEşya - 615';
@@ -43,11 +25,13 @@ exports.run = async (bot, message, args) => {
     if (!oldarray.includes(desc1)) return message.channel.send("Kazman yok.");
 
 
-    const elmas = "<:elmas:744585308024340520>";
-    const stone = "<:stone:744587273898557521>";
-    const lava = "<:lava:744593055444893701>";
-    const pick = "<:pickaxe:744606156156174496>";
+    const elmas = "<:elmas:744585308024340520>"; //1
+    const lava = "<:lava:744593055444893701>"; //2
+    const iron = "<:iron:755791174572310689>" //3
+    const emerald = "<:emerald:755794719996379327>"; //4
+    const stone = "<:stone:744587273898557521>"; //5
 
+    const pick = "<:pickaxe:744606156156174496>";
 
 
     let KucukEkran = new Array(5).fill(0).map(() => new Array(5).fill(0));
@@ -66,57 +50,24 @@ exports.run = async (bot, message, args) => {
       }
     }
 
-    function BuyukResmiDoldur(xx, yy) {
-      for (let i = 0; i < BuyukEkranXX; i++) {
-        for (var j = 0; j < BuyukEkranYY; j++) {
-          Olasilik = Math.random() * 100;
-          if (Olasilik > 0 && Olasilik < 5) {
-            BuyukEkran[i][j] = 1;
-          } else if (Olasilik >= 5 && Olasilik < 30) {
-            BuyukEkran[i][j] = 2;
-          } else {
-            BuyukEkran[i][j] = 3;
-          }
-        }
-      }
-    }
-
-    async function myPrint(xx, yy) {
-      let m = "";
-      for (let i = 0; i < xx; i++) {
-        for (var j = 0; j < yy; j++) {
-          switch (KucukEkran[i][j]) {
-            case 1:
-              m += elmas;
-              break;
-            case 2:
-              m += lava;
-              break;
-            case 3:
-              m += stone;
-              break;
-          }
-        }
-        m += "\n";
-      }
-      let msgs = await message.channel.send("`W | A | S | D` kullan", m);
-    }
-
     let simdiX = 50;
     let simdiY = 50;
     let kazmaX = 2;
     let kazmaY = 2;
-    let embedSit;
     let embed;
     for (let i = 0; i < BuyukEkranXX; i++) {
       for (var j = 0; j < BuyukEkranYY; j++) {
         Olasilik = Math.random() * 100;
         if (Olasilik > 0 && Olasilik < 1) {
           BuyukEkran[i][j] = 1;
-        } else if (Olasilik >= 5 && Olasilik < 30) {
+        } else if (Olasilik > 2 && Olasilik < 6) {
           BuyukEkran[i][j] = 2;
+        } else if (Olasilik > 6 && Olasilik < 12) {
+          BuyukEkran[i][j] = 3
+        } else if (Olasilik > 12 && Olasilik < 16) {
+          BuyukEkran[i][j] = 4;
         } else {
-          BuyukEkran[i][j] = 3;
+          BuyukEkran[i][j] = 5;
         }
       }
     }
@@ -141,15 +92,19 @@ exports.run = async (bot, message, args) => {
               m += lava;
               break;
             case 3:
-              m += stone;
+              m += iron;
               break;
+            case 4:
+              m += emerald;
+              break;
+            case 5:
+              m += stone
           }
         }
       }
       m += "\n";
 
     }
-
 
     message.channel.send("`W | A | S | D` kullanarak hareket ettir. `esc` diyerek iptal et")
     let msgs = await message.channel.send(m);
@@ -202,20 +157,45 @@ exports.run = async (bot, message, args) => {
         message.channel.send("Seçeneklerden birini söylemediğin için iptal ettim")
       }
       if (KucukEkran[kazmaX][kazmaY] === 1) {
+
         let desc = `**Elmas<:Diamond:755024597711323136>** \nBiriktirilebilir - 100000`
-        KucukEkran[kazmaX][kazmaY] = 3
-        BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 3;
+        KucukEkran[kazmaX][kazmaY] = 5
+        BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
         let item = db.get(message.author.id)
-        if (item.includes(desc)) message.channel.send("Elmasın olduğu için bir tane daha elmas vermedim")
+        if (item.includes(desc)) {
+          return message.channel.send("Elmasın olduğu için bir tane daha elmas vermedim")
+        }
         db.push(message.author.id, desc)
+
       } else if (KucukEkran[kazmaX][kazmaY] === 2) {
-        KucukEkran[kazmaX][kazmaY] = 3
-        BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 3
+
+        KucukEkran[kazmaX][kazmaY] = 5
+        BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5
         collector.stop()
         db.delete(message.author.id)
         message.channel.send("Lava düştüğün için öldün, çantanı yaktın")
-      }
 
+      } else if (KucukEkran[kazmaX][kazmaY] === 3) {
+        let idesc = "**Demir<:ironingot:755792849814945822>** \nBiriktirilebilir - 16000"
+        KucukEkran[kazmaX][kazmaY] = 5
+        BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
+        let item = db.get(message.author.id)
+        if (item.includes(idesc)) {
+          return message.channel.send("Demirin olduğu için bir tane daha demir vermedim")
+        }
+        db.push(message.author.id, idesc)
+
+      } else if (KucukEkran[kazmaX][kazmaY] === 4) {
+        let edesc = "**Zümrüt<:emeraldingot:755794862741258301>** \nBiriktirilebilir - 250000"
+        KucukEkran[kazmaX][kazmaY] = 5
+        BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
+        let item = db.get(message.author.id)
+        if (item.includes(edesc)) {
+          return message.channel.send("Zümrütün olduğu için bir tane daha zümrüt vermedim")
+        }
+        db.push(message.author.id, edesc)
+
+      }
 
       tasi(simdiX, simdiY, 5, 5);
       let m1 = " ";
@@ -223,9 +203,6 @@ exports.run = async (bot, message, args) => {
         for (var b = 0; b < yy; b++) {
           if (c === kazmaX && b === kazmaY) {
             m1 += pick
-          } else if (embedSit === 1) {
-
-            msgs.edit(" ", embed)
           } else {
             switch (KucukEkran[c][b]) {
               case 1:
@@ -235,8 +212,13 @@ exports.run = async (bot, message, args) => {
                 m1 += lava;
                 break;
               case 3:
-                m1 += stone;
+                m1 += iron;
                 break;
+              case 4:
+                m1 += emerald
+              case 5:
+                m1 += stone
+
             }
           }
         }
@@ -261,6 +243,6 @@ exports.help = {
 };
 
 exports.conf = {
-  aliases: ["mcd", "mc"],
+  aliases: ["mcdc", "mc"],
   cooldown: 10,
 };

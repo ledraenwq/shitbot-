@@ -1,0 +1,26 @@
+{
+    "Elmas": {
+        "ad": "Elmas<:Diamond:755024597711323136>",
+        "tür": "Biriktirilebilir",
+        "fiyat": "5000000",
+        "alt": "elmas",
+        "satış": "100000",
+        "açıklama": "Sadece satıp para kazanabilirsin"
+    },
+    "Demir": {
+        "ad": "Demir<:ironingot:755792849814945822>",
+        "tür": "Biriktirilebilir",
+        "fiyat": "50000",
+        "alt": "demir",
+        "satış": "16000",
+        "açıklama": "Sadece satıp para kazanabilirsin"
+    },
+    "Zümrüt": {
+        "ad": "Zümrüt<:emeraldingot:755794862741258301>",
+        "tür": "Biriktirilebilir",
+        "fiyat": "15000000",
+        "alt": "zümrüt",
+        "satış": "250000",
+        "açıklama": "Sadece satıp para kazanabilirsin"
+    }
+}

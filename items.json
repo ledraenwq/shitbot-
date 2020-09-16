@@ -23,14 +23,6 @@
         "satış": "Satılamaz",
         "açıklama": "Bir film önerisi"
     },
-    "Elmas": {
-        "ad": "Elmas<:Diamond:755024597711323136>",
-        "tür": "Biriktirilebilir",
-        "fiyat": "5000000",
-        "alt": "elmas",
-        "satış": "100000",
-        "açıklama": "Sadece satıp para kazanabilirsin"
-    },
     "peepee size machine": {
         "ad": "peepee size machine<:pepeoha:725969290754523166>",
         "tür": "Eşya",
@@ -39,5 +31,7 @@
         "satış": "6900",
         "açıklama": "Mükemmel yapay zeka teknolojisiyle yarrağının boyunu tahmin eder. (%69 doğruluk payı)"
     }
+
+
 
 }
