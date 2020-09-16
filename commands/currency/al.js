@@ -36,7 +36,10 @@ exports.run = async (client, message, args) => {
             return message.channel.send(`Yeterli paran yok, ${KDVDahil - money} daha biriktirmen gerek<:uzucu:725952785048272927>`)
         let desc = `**${itemName}** \n${itemCat} - ${sellPrice}`
         if (item === null) {
+            db.subtract(`money_${message.author.id}`, KDVDahil)
+            message.channel.send(`${itemPrice} liraya "${itemName}" aldın, KDV dahil ${KDVDahil}`)
 
+            db.push(message.author.id, desc)
         }
         if (!item.includes(desc)) {
             db.subtract(`money_${message.author.id}`, KDVDahil)
@@ -50,7 +53,7 @@ exports.run = async (client, message, args) => {
     } catch (e) {
         message.channel.send(e.message)
     }
-
+s
 }
 
 exports.help = {
