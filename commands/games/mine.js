@@ -199,14 +199,18 @@ exports.run = async (bot, message, args) => {
 
       } else {
         collector.stop()
-        message.channel.send("Seçeneklerden birini söylemediğin için iptal ettim")
+        rmessage.channel.send("Seçeneklerden birini söylemediğin için iptal ettim")
       }
       if (KucukEkran[kazmaX][kazmaY] === 1) {
         let desc = `**${itemName}** \n${itemCat} - ${sellPrice}`
         KucukEkran[kazmaX][kazmaY] = 3
         BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 3;
+        let item = db.get(message.author.id)
+        if (item.includes(desc)) return message.channel.send("Elmasın olduğu için bir tane daha elmas vermedim")
         db.push(message.author.id, desc)
       } else if (KucukEkran[kazmaX][kazmaY] === 2) {
+        KucukEkran[kazmaX][kazmaY] = 3
+        BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 3
         collector.stop()
         db.delete(message.author.id)
         message.channel.send("Lava düştüğün için öldün, çantanı yaktın")
@@ -257,6 +261,6 @@ exports.help = {
 };
 
 exports.conf = {
-  aliases: ["mine", "mc"],
+  aliases: ["mcdc", "mc"],
   cooldown: 10,
 };

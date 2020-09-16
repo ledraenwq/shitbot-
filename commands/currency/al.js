@@ -7,6 +7,7 @@ const fs = require("fs")
 const items = JSON.parse(fs.readFileSync("items.json", "utf8"))
 exports.run = async (client, message, args) => {
     let money = db.fetch(`money_${message.author.id}`)
+    let item = db.get(message.author.id)
     try {
         let itemName = ""
         let altName = ""
@@ -33,14 +34,18 @@ exports.run = async (client, message, args) => {
             return message.channel.send("OLMAYAN BİR ŞEYİ NASIL ALACAKSIN???")
         if (money < KDVDahil)
             return message.channel.send(`Yeterli paran yok, ${KDVDahil - money} daha biriktirmen gerek<:uzucu:725952785048272927>`)
-
-        db.subtract(`money_${message.author.id}`, KDVDahil)
-        message.channel.send(`${itemPrice} liraya "${itemName}" aldın, KDV dahil ${KDVDahil}`)
         let desc = `**${itemName}** \n${itemCat} - ${sellPrice}`
-        db.push(message.author.id, desc)
+        if (item === null || !item.includes(desc)) {
+            db.subtract(`money_${message.author.id}`, KDVDahil)
+            message.channel.send(`${itemPrice} liraya "${itemName}" aldın, KDV dahil ${KDVDahil}`)
+
+            db.push(message.author.id, desc)
+        }
+        if (item.includes(desc)) return message.channel.send("Zaten bu eşyan var")
+
 
     } catch (e) {
-        message.channel.send("Hata")
+        message.channel.send(e.message)
     }
 
 }
