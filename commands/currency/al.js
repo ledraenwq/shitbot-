@@ -50,7 +50,7 @@ exports.run = async (client, message, args) => {
 }
 
 exports.help = {
-    name: "almasj",
+    name: "al",
     description: "Marketteki eşyaları satın al.",
     usage: "b!market [komut]",
     example: "b!al kazma"
