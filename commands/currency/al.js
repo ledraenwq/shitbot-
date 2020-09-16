@@ -35,29 +35,22 @@ exports.run = async (client, message, args) => {
         if (money < KDVDahil)
             return message.channel.send(`Yeterli paran yok, ${KDVDahil - money} daha biriktirmen gerek<:uzucu:725952785048272927>`)
         let desc = `**${itemName}** \n${itemCat} - ${sellPrice}`
-        if (item === null) {
+        if (item === null || !item.includes(desc)) {
             db.subtract(`money_${message.author.id}`, KDVDahil)
             message.channel.send(`${itemPrice} liraya "${itemName}" aldın, KDV dahil ${KDVDahil}`)
 
             db.push(message.author.id, desc)
-        }
-        if (!item.includes(desc)) {
-            db.subtract(`money_${message.author.id}`, KDVDahil)
-            message.channel.send(`${itemPrice} liraya "${itemName}" aldın, KDV dahil ${KDVDahil}`)
-
-            db.push(message.author.id, desc)
-        }
-        if (item.includes(desc)) return message.channel.send("Zaten bu eşyan var")
+        } else if (item.includes(desc)) return message.channel.send("Zaten bu eşyan var")
 
 
     } catch (e) {
         message.channel.send(e.message)
     }
-s
+    s
 }
 
 exports.help = {
-    name: "al",
+    name: "almasj",
     description: "Marketteki eşyaları satın al.",
     usage: "b!market [komut]",
     example: "b!al kazma"

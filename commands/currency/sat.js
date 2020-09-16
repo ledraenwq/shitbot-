@@ -34,6 +34,7 @@ exports.run = async (client, message, args) => {
 
         let desc = `**${itemName}** \n${itemCat} - ${sellPrice}`;
         if (itemName === "") return message.channel.send("Mal böyle bir eşya yok");
+        if (oldarray === null) return message.channel.send("Bu eşya sende yok")
         if (!oldarray.includes(desc)) return message.channel.send("Bu eşya sende yok.");
 
 
