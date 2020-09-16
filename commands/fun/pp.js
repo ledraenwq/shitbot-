@@ -1,24 +1,28 @@
 const Discord = require("discord.js");
 const got = require("got")
+const db = require("quick.db")
 const talkedRecently = new Set();
 
 
 exports.run = async (bot, message, args) => {
 
-  let user;
 
-  if (message.mentions.users.first()) {
-    user = message.mentions.users.first();
-  } else if (args[0]) {
-    user = message.guild.members.cache.get(args[0]).user;
-  } else {
-    user = message.author;
-  }
+  let desc = "**peepee size machine<:pepeoha:725969290754523166>** \nEşya - 6900"
+  let item = db.get(message.author.id)
+
+  if (item.includes(desc)) {
+    let user;
+
+    if (message.mentions.users.first()) {
+      user = message.mentions.users.first();
+    } else if (args[0]) {
+      user = message.guild.members.cache.get(args[0]).user;
+    } else {
+      user = message.author;
+    }
 
 
-  if (talkedRecently.has(message.author.id)) {
-    message.channel.send('Yavaş orspuçocu');
-  } else {
+
     let chance = Math.ceil(Math.random() * 10);
 
     if (user.bot) {
@@ -32,7 +36,7 @@ exports.run = async (bot, message, args) => {
 
 
     } else {
-      if (chance === 0) {
+      if (chance === 1) {
         const embedlol = new Discord.MessageEmbed()
           .setTitle('peepee size machine')
           .setDescription(`D-dostum ${user}'ın yarrağının boyu ölçülemeyecek kadar küçük`)
@@ -58,13 +62,8 @@ exports.run = async (bot, message, args) => {
         msg.react('😳');
       }
     }
-
-
-
-    talkedRecently.add(message.author.id);
-    setTimeout(() => {
-      talkedRecently.delete(message.author.id);
-    }, 1000);
+  } else {
+    message.channel.send("peepee size machine'e sahip değilsin")
   }
 }
 
