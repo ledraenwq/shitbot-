@@ -164,9 +164,10 @@ exports.run = async (bot, message, args) => {
         BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
         let item = db.get(message.author.id)
         if (item.includes(desc)) {
-          return message.channel.send("Elmasın olduğu için bir tane daha elmas vermedim")
+          message.channel.send("Elmasın olduğu için bir tane daha elmas vermedim")
+        } else {
+          db.push(message.author.id, desc)
         }
-        db.push(message.author.id, desc)
 
       } else if (KucukEkran[kazmaX][kazmaY] === 2) {
 
@@ -182,9 +183,10 @@ exports.run = async (bot, message, args) => {
         BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
         let item = db.get(message.author.id)
         if (item.includes(idesc)) {
-          return message.channel.send("Demirin olduğu için bir tane daha demir vermedim")
+          message.channel.send("Demirin olduğu için bir tane daha demir vermedim")
+        } else {
+          db.push(message.author.id, idesc)
         }
-        db.push(message.author.id, idesc)
 
       } else if (KucukEkran[kazmaX][kazmaY] === 4) {
         let edesc = "**Zümrüt<:emeraldingot:755794862741258301>** \nBiriktirilebilir - 250000"
@@ -192,9 +194,10 @@ exports.run = async (bot, message, args) => {
         BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
         let item = db.get(message.author.id)
         if (item.includes(edesc)) {
-          return message.channel.send("Zümrütün olduğu için bir tane daha zümrüt vermedim")
+          message.channel.send("Zümrütün olduğu için bir tane daha zümrüt vermedim")
+        } else {
+          db.push(message.author.id, edesc)
         }
-        db.push(message.author.id, edesc)
 
       }
 
@@ -217,8 +220,10 @@ exports.run = async (bot, message, args) => {
                 break;
               case 4:
                 m1 += emerald
+                break
               case 5:
                 m1 += stone
+                break
 
             }
           }
@@ -244,6 +249,6 @@ exports.help = {
 };
 
 exports.conf = {
-  aliases: ["mcdc", "mc"],
+  aliases: ["mcd", "mc"],
   cooldown: 10,
 };
