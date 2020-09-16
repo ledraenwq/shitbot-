@@ -99,6 +99,7 @@ exports.run = async (bot, message, args) => {
               break;
             case 5:
               m += stone
+              break;
           }
         }
       }
