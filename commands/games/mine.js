@@ -206,7 +206,7 @@ exports.run = async (bot, message, args) => {
         KucukEkran[kazmaX][kazmaY] = 3
         BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 3;
         let item = db.get(message.author.id)
-        if (item.includes(desc)) return message.channel.send("Elmasın olduğu için bir tane daha elmas vermedim")
+        if (item.includes(desc)) message.channel.send("Elmasın olduğu için bir tane daha elmas vermedim")
         db.push(message.author.id, desc)
       } else if (KucukEkran[kazmaX][kazmaY] === 2) {
         KucukEkran[kazmaX][kazmaY] = 3
@@ -261,6 +261,6 @@ exports.help = {
 };
 
 exports.conf = {
-  aliases: ["mcdc", "mc"],
+  aliases: ["mcd", "mc"],
   cooldown: 10,
 };
