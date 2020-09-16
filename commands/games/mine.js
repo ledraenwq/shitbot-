@@ -202,7 +202,7 @@ exports.run = async (bot, message, args) => {
         rmessage.channel.send("Seçeneklerden birini söylemediğin için iptal ettim")
       }
       if (KucukEkran[kazmaX][kazmaY] === 1) {
-        let desc = `**${itemName}** \n${itemCat} - ${sellPrice}`
+        let desc = `**Elmas<:Diamond:755024597711323136>** \nSatılabilir - 100000`
         KucukEkran[kazmaX][kazmaY] = 3
         BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 3;
         let item = db.get(message.author.id)
