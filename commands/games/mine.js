@@ -199,7 +199,7 @@ exports.run = async (bot, message, args) => {
 
       } else {
         collector.stop()
-        rmessage.channel.send("Seçeneklerden birini söylemediğin için iptal ettim")
+        message.channel.send("Seçeneklerden birini söylemediğin için iptal ettim")
       }
       if (KucukEkran[kazmaX][kazmaY] === 1) {
         let desc = `**Elmas<:Diamond:755024597711323136>** \nSatılabilir - 100000`
