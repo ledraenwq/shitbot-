@@ -46,7 +46,7 @@ exports.run = async (client, message, args) => {
     } catch (e) {
         message.channel.send(e.message)
     }
-    s
+
 }
 
 exports.help = {
