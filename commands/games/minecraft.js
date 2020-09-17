@@ -18,20 +18,23 @@ exports.run = async (bot, message, args) => {
   try {
 
 
+    const waterDesc = "**Dolu Kova<:waterbuc:756141746559385702>** \nEşya - 1500"
+    const logDesc = "**Odun<:logg:756144484651237497>** \nEşya - 963"
+    const obsDesc = "**Obsidyen<:obsi:756143375626928200>** \nEşya - 69000"
+    const buckDesc = "**Kova<:buck:756142136419942491>** \nEşya - 800"
+
+    const water = "<:water:756135645721919588>"
+    const log = "<:log:756134762128736336>"
+    const obsidian = "<:obs:756137182812438538>"
+    const grass = "<:grass:756134084337729686>"
+    const lava = "<:lava:744593055444893701>"
+
+    const steve = "<:steve:756136329884205077>"
+
+
+
     let oldarray = db.get(message.author.id);
 
-    let desc1 = '**Kazma<:pickaxe:744606156156174496>** \nEşya - 615';
-    if (oldarray === null) return message.channel.send("Kazman yok.")
-    if (!oldarray.includes(desc1)) return message.channel.send("Kazman yok.");
-
-
-    const elmas = "<:elmas:744585308024340520>"; //1
-    const lava = "<:lava:744593055444893701>"; //2
-    const iron = "<:iron:755791174572310689>" //3
-    const emerald = "<:emerald:755794719996379327>"; //4
-    const stone = "<:stone:744587273898557521>"; //5
-
-    const pick = "<:pickaxe:744606156156174496>";
 
 
     let KucukEkran = new Array(5).fill(0).map(() => new Array(5).fill(0));
@@ -54,17 +57,17 @@ exports.run = async (bot, message, args) => {
     let simdiY = 50;
     let kazmaX = 2;
     let kazmaY = 2;
-    let embed;
+
     for (let i = 0; i < BuyukEkranXX; i++) {
       for (var j = 0; j < BuyukEkranYY; j++) {
         Olasilik = Math.random() * 100;
-        if (Olasilik > 0 && Olasilik < 1) {
+        if (Olasilik > 0 && Olasilik < 10) {
           BuyukEkran[i][j] = 1;
-        } else if (Olasilik > 2 && Olasilik < 6) {
+        } else if (Olasilik > 10 && Olasilik < 11) {
           BuyukEkran[i][j] = 2;
-        } else if (Olasilik > 6 && Olasilik < 12) {
+        } else if (Olasilik > 12 && Olasilik < 20) {
           BuyukEkran[i][j] = 3
-        } else if (Olasilik > 12 && Olasilik < 13) {
+        } else if (Olasilik > 20 && Olasilik < 21) {
           BuyukEkran[i][j] = 4;
         } else {
           BuyukEkran[i][j] = 5;
@@ -81,24 +84,24 @@ exports.run = async (bot, message, args) => {
     for (let i = 0; i < xx; i++) {
       for (var j = 0; j < yy; j++) {
         if (i === kazmaX && j === kazmaY) {
-          m += pick
+          m += steve
         } else {
 
           switch (KucukEkran[i][j]) {
             case 1:
-              m += elmas;
+              m += water;
               break;
             case 2:
               m += lava;
               break;
             case 3:
-              m += iron;
+              m += log;
               break;
             case 4:
-              m += emerald;
+              m += obsidian;
               break;
             case 5:
-              m += stone
+              m += grass;
               break;
           }
         }
@@ -157,16 +160,25 @@ exports.run = async (bot, message, args) => {
         collector.stop()
         message.channel.send("Seçeneklerden birini söylemediğin için iptal ettim")
       }
+
+
       if (KucukEkran[kazmaX][kazmaY] === 1) {
 
-        let desc = `**Elmas<:Diamond:755024597711323136>** \nBiriktirilebilir - 100000`
-        KucukEkran[kazmaX][kazmaY] = 5
-        BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
+
+
         let item = db.get(message.author.id)
-        if (item.includes(desc)) {
-          message.channel.send("Elmasın olduğu için bir tane daha elmas vermedim")
+        if (!item.includes(buckDesc)) message.channel.send("Kovan yok")
+        else if (item.includes(waterDesc)) {
+          message.channel.send("Dolu kovan olduğu için kovanı doldurmadım")
         } else {
-          db.push(message.author.id, desc)
+          db.set(
+            message.author.id,
+            item.filter((d) => d !== buckDesc)
+          );
+          db.push(message.author.id, waterDesc)
+          KucukEkran[kazmaX][kazmaY] = 5
+          BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
+
         }
 
       } else if (KucukEkran[kazmaX][kazmaY] === 2) {
@@ -178,51 +190,52 @@ exports.run = async (bot, message, args) => {
         message.channel.send("Lava düştüğün için öldün, çantanı yaktın")
 
       } else if (KucukEkran[kazmaX][kazmaY] === 3) {
-        let idesc = "**Demir<:ironingot:755792849814945822>** \nBiriktirilebilir - 16000"
-        KucukEkran[kazmaX][kazmaY] = 5
-        BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
-        let item = db.get(message.author.id)
-        if (item.includes(idesc)) {
-          message.channel.send("Demirin olduğu için bir tane daha demir vermedim")
-        } else {
-          db.push(message.author.id, idesc)
-        }
 
-      } else if (KucukEkran[kazmaX][kazmaY] === 4) {
-        let edesc = "**Zümrüt<:emeraldingot:755794862741258301>** \nBiriktirilebilir - 250000"
         KucukEkran[kazmaX][kazmaY] = 5
         BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
         let item = db.get(message.author.id)
-        if (item.includes(edesc)) {
-          message.channel.send("Zümrütün olduğu için bir tane daha zümrüt vermedim")
+        if (item.includes(logDesc)) {
+          message.channel.send("Odunun olduğu için bir tane daha odun vermedim")
         } else {
-          db.push(message.author.id, edesc)
+          db.push(message.author.id, logDesc)
         }
 
       }
+      /*else if (KucukEkran[kazmaX][kazmaY] === 4) {
+
+             KucukEkran[kazmaX][kazmaY] = 5
+             BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
+             let item = db.get(message.author.id)
+             if (item.includes(edesc)) {
+               message.channel.send("Zümrütün olduğu için bir tane daha zümrüt vermedim")
+             } else {
+               db.push(message.author.id, edesc)
+             }
+
+           }*/
 
       tasi(simdiX, simdiY, 5, 5);
       let m1 = " ";
       for (let c = 0; c < xx; c++) {
         for (var b = 0; b < yy; b++) {
           if (c === kazmaX && b === kazmaY) {
-            m1 += pick
+            m1 += steve
           } else {
             switch (KucukEkran[c][b]) {
               case 1:
-                m1 += elmas;
+                m1 += water;
                 break;
               case 2:
                 m1 += lava;
                 break;
               case 3:
-                m1 += iron;
+                m1 += log;
                 break;
               case 4:
-                m1 += emerald
+                m1 += obsidian
                 break
               case 5:
-                m1 += stone
+                m1 += grass
                 break
 
             }
@@ -232,8 +245,8 @@ exports.run = async (bot, message, args) => {
       }
 
       msgs.edit(m1);
-    })
 
+    })
 
 
   } catch (e) {
@@ -242,13 +255,13 @@ exports.run = async (bot, message, args) => {
 };
 
 exports.help = {
-  name: "kazı",
-  description: "Minecraft elmas arama ama discord içinde",
+  name: "minecraft",
+  description: "Minecraft ama discord içinde",
   usage: "b!kazı",
   example: "b!kazı",
 };
 
 exports.conf = {
-  aliases: ["maden", "mine"],
+  aliases: ["mcdc", "mc"],
   cooldown: 10,
 };

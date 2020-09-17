@@ -5,6 +5,7 @@ const default_prefix = config.default_prefix
 const fs = require("fs")
 
 const items = JSON.parse(fs.readFileSync("items.json", "utf8"))
+const ores = JSON.parse(fs.readFileSync("items3.json", "utf8"))
 exports.run = async (client, message, args) => {
     let money = db.fetch(`money_${message.author.id}`)
     let item = db.get(message.author.id)
@@ -28,10 +29,23 @@ exports.run = async (client, message, args) => {
 
             }
         }
+
+        if (itemName === "")
+            for (let o in ores) {
+                if (args.join(" ").trim().toLowerCase() === ores[o].alt.toLowerCase()) {
+                    itemName = ores[o].ad;
+                    altName = ores[o].alt;
+                    itemPrice = parseInt(ores[o].fiyat);
+                    itemDesc = ores[o].açıklama;
+                    itemCat = ores[o].tür;
+                    sellPrice = ores[o].satış;
+                    if (itemName === "") return message.channel.send("Mal böyle bi eşya yok")
+                }
+
+            }
+
         let KDV = itemPrice * 10 / 100
         let KDVDahil = itemPrice + KDV
-        if (itemName === "")
-            return message.channel.send("OLMAYAN BİR ŞEYİ NASIL ALACAKSIN???")
         if (money < KDVDahil)
             return message.channel.send(`Yeterli paran yok, ${KDVDahil - money} daha biriktirmen gerek<:uzucu:725952785048272927>`)
         let desc = `**${itemName}** \n${itemCat} - ${sellPrice}`

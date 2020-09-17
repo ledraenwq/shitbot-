@@ -1,0 +1,35 @@
+{
+    "Kazma": {
+        "ad": "Kazma<:pickaxe:744606156156174496>",
+        "tür": "Eşya",
+        "fiyat": "1000",
+        "alt": "kazma",
+        "satış": "615",
+        "açıklama": "`b!mc` komutunu kullanmanı sağlar"
+    },
+    "Kova": {
+        "ad": "Kova<:buck:756142136419942491>",
+        "tür": "Eşya",
+        "fiyat": "1200",
+        "alt": "kova",
+        "satış": "800",
+        "açıklama": "Su bulduğunda suyu saklamanı sağlar"
+    },
+    "Odun": {
+        "ad": "Odun<:logg:756144484651237497>",
+        "tür": "Eşya",
+        "fiyat": "1500",
+        "alt": "odun",
+        "satış": "963",
+        "açıklama": "Sadece satılır"
+    },
+    "Obsidyen": {
+        "ad": "Obsidyen<:obsi:756143375626928200>",
+        "tür": "Eşya",
+        "fiyat": "150000",
+        "alt": "odun",
+        "satış": "69000",
+        "açıklama": "Sadece satılır"
+    }
+
+}

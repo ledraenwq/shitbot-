@@ -6,6 +6,7 @@ const fs = require("fs")
 
 const items = JSON.parse(fs.readFileSync("items.json", "utf8"))
 const ores = JSON.parse(fs.readFileSync("ores.json", "utf8"));
+const items2 = JSON.parse(fs.readFileSync("items3.json", "utf8"));
 
 exports.run = (client, message, args) => {
     try {
@@ -13,6 +14,7 @@ exports.run = (client, message, args) => {
 
         let categories = [];
         let orecategories = [];
+        let icategories = [];
 
         if (!args[0]) {
             for (let i in items) {
@@ -73,6 +75,35 @@ exports.run = (client, message, args) => {
                 oreembed.addField(orecategories[o], oreDesc)
             }
             message.channel.send(oreembed)
+        } else if (args[0] == "3") {
+
+            for (let ii in items2) {
+
+                if (!icategories.includes(items2[ii].ad)) {
+                    icategories.push(items2[ii].ad)
+                }
+            }
+
+
+            const iEmbed = new Discord.MessageEmbed()
+                .setTitle("Mağaza")
+                .setColor("RANDOM")
+
+            for (let ii = 0; ii < icategories.length; ii++) {
+
+                let iDesc = "";
+
+
+                for (let ic in items2) {
+                    if (icategories[ii] === items2[ic].ad) {
+                        iDesc += `**Tür:** ${items2[ic].tür}\n**Fiyat:** ${items2[ic].fiyat} \n**Satış Fiyatı:** ${items2[ic].satış} \n**Açıklama:** ${items2[ic].açıklama}\n`
+                    }
+
+
+                }
+                iEmbed.addField(icategories[ii], iDesc)
+            }
+            message.channel.send(iEmbed)
         }
 
     } catch (e) {

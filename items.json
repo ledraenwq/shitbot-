@@ -1,12 +1,5 @@
 {
-    "Kazma": {
-        "ad": "Kazma<:pickaxe:744606156156174496>",
-        "tür": "Eşya",
-        "fiyat": "1000",
-        "alt": "kazma",
-        "satış": "615",
-        "açıklama": "`b!mc` komutunu kullanmanı sağlar"
-    },
+    
     "Telefon": {
         "ad": "Telefon\\📱",
         "tür": "Eşya",

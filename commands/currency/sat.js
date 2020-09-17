@@ -8,6 +8,7 @@ const message = require("../../events/message");
 
 const items = JSON.parse(fs.readFileSync("items.json", "utf8"));
 const ores = JSON.parse(fs.readFileSync("ores.json", "utf8"));
+const items3 = JSON.parse(fs.readFileSync("items3.json", "utf8"));
 
 exports.run = async (client, message, args) => {
     let money = db.fetch(`money_${message.author.id}`);
@@ -43,7 +44,20 @@ exports.run = async (client, message, args) => {
                     sellPrice = ores[o].satış;
                 }
             }
-            if (itemName === "") return message.channel.send("Mal böyle bi eşya yok")
+            if (itemName === "") {
+                for (let i in items3) {
+                    if (args.join(" ").trim().toLowerCase() === items3[i].alt.toLowerCase()) {
+                        itemName = items3[i].ad;
+                        altName = items3[i].alt;
+                        itemPrice = parseInt(items3[i].fiyat);
+                        itemDesc = items3[i].açıklama;
+                        itemCat = items3[i].tür;
+                        sellPrice = items3[i].satış;
+                    }
+                }
+
+                if (itemName === "") return message.channel.send("Mal böyle bi eşya yok")
+            }
         }
         let desc = `**${itemName}** \n${itemCat} - ${sellPrice}`;
         if (oldarray === null) return message.channel.send("Bu eşya sende yok")
