@@ -18,10 +18,10 @@ exports.run = async (bot, message, args) => {
   try {
 
 
-    const waterDesc = "**Dolu Kova<:waterbuc:756141746559385702>** \nEşya - 1500"
+    const waterDesc = "**Su<:waterbuc:756141746559385702>** \nEşya - 1500"
     const logDesc = "**Odun<:logg:756144484651237497>** \nEşya - 963"
     const obsDesc = "**Obsidyen<:obsi:756143375626928200>** \nEşya - 69000"
-    const buckDesc = "**Su<:buck:756142136419942491>** \nEşya - 800"
+    const buckDesc = "**Kova<:buck:756142136419942491>** \nEşya - 800"
 
     const water = "<:water:756135645721919588>"
     const log = "<:log:756134762128736336>"
