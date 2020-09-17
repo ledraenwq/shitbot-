@@ -62,14 +62,24 @@ exports.run = async (client, message, args) => {
         let desc = `**${itemName}** \n${itemCat} - ${sellPrice}`;
         if (oldarray === null) return message.channel.send("Bu eşya sende yok")
         if (!oldarray.includes(desc)) return message.channel.send("Bu eşya sende yok.");
+        if (altName == "su") {
+            db.set(
+                message.author.id,
+                oldarray.filter((d) => d !== desc)
+            )
+            const buckDesc = "**Kova<:buck:756142136419942491>** \nEşya - 800"
+            db.push(message.author.id, buckDesc);
+            message.channel.send(`${sellPrice} liraya ${itemName}'i sattın.`);
+        } else {
 
 
-        db.set(
-            message.author.id,
-            oldarray.filter((d) => d !== desc)
-        );
-        db.add(`money_${message.author.id}`, sellPrice);
-        message.channel.send(`${sellPrice} liraya ${itemName}'i sattın.`);
+            db.set(
+                message.author.id,
+                oldarray.filter((d) => d !== desc)
+            );
+            db.add(`money_${message.author.id}`, sellPrice);
+            message.channel.send(`${sellPrice} liraya ${itemName}'i sattın.`);
+        }
     } catch (e) {
         message.channel.send(e.message);
     }
