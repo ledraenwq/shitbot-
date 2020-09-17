@@ -30,7 +30,7 @@ exports.run = async (bot, message, args) => {
       if (money < 1000) return message.channel.send("1000 liranın altında kişiyi soymaya ne gerek var?")
       else if (authorMoney < 2000) return message.channel.send("Paran 2000 liranın altında olduğu için hırsızlık yapamazsın")
       else {
-        let chance = Math.round(Math.random() * 15)
+        let chance = Math.ceil(Math.random() * 15)
         if (chance === 1) {
           db.subtract(`money_${message.author.id}`, 2000)
           message.channel.send("Hehe ters tepti 2000 lira kaybettin")
