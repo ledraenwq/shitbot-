@@ -167,7 +167,7 @@ exports.run = async (bot, message, args) => {
 
 
         let item = db.get(message.author.id)
-        if (!item.includes(buckDesc)) message.channel.send("Kovan yok")
+        if (!item.includes(buckDesc)) return message.channel.send("Kovan yok")
         else if (item.includes(waterDesc)) {
           message.channel.send("Dolu kovan olduğu için kovanı doldurmadım")
         } else {

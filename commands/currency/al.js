@@ -39,11 +39,11 @@ exports.run = async (client, message, args) => {
                     itemDesc = ores[o].açıklama;
                     itemCat = ores[o].tür;
                     sellPrice = ores[o].satış;
-                    if (itemName === "") return message.channel.send("Mal böyle bi eşya yok")
+
                 }
 
             }
-
+        if (itemName === "") return message.channel.send("Mal böyle bi eşya yok")
         let KDV = itemPrice * 10 / 100
         let KDVDahil = itemPrice + KDV
         if (money < KDVDahil)
