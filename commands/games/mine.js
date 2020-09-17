@@ -64,7 +64,7 @@ exports.run = async (bot, message, args) => {
           BuyukEkran[i][j] = 2;
         } else if (Olasilik > 6 && Olasilik < 12) {
           BuyukEkran[i][j] = 3
-        } else if (Olasilik > 12 && Olasilik < 16) {
+        } else if (Olasilik > 12 && Olasilik < 13) {
           BuyukEkran[i][j] = 4;
         } else {
           BuyukEkran[i][j] = 5;
