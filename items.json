@@ -15,14 +15,7 @@
         "satış": "1562",
         "açıklama": "`b!telefon` komutunu kullanmanı sağlar"
     },
-    "Film": {
-        "ad": "Film\\🎬",
-        "tür": "Buradan almayın direk `b!film` diyin",
-        "fiyat": "300",
-        "alt": "film",
-        "satış": "Satılamaz",
-        "açıklama": "Bir film önerisi"
-    },
+
     "peepee size machine": {
         "ad": "peepee size machine<:pepeoha:725969290754523166>",
         "tür": "Eşya",

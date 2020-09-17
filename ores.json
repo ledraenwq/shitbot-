@@ -22,5 +22,13 @@
         "alt": "zümrüt",
         "satış": "250000",
         "açıklama": "Sadece satıp para kazanabilirsin"
+    },
+    "Film": {
+        "ad": "Film\\🎬",
+        "tür": "Tek kullanımlık",
+        "fiyat": "300",
+        "alt": "film",
+        "satış": "31",
+        "açıklama": "Bir film önerisi"
     }
 }
