@@ -27,6 +27,7 @@ exports.run = (client, message, args) => {
             const embed = new Discord.MessageEmbed()
                 .setTitle("Mağaza")
                 .setColor("RANDOM")
+                .setFooter("1/3 sayfa")
 
             for (let i = 0; i < categories.length; i++) {
 
@@ -59,6 +60,7 @@ exports.run = (client, message, args) => {
             const oreembed = new Discord.MessageEmbed()
                 .setTitle("Mağaza")
                 .setColor("RANDOM")
+                .setFooter("2/3 sayfa")
 
             for (let o = 0; o < orecategories.length; o++) {
 
@@ -88,6 +90,7 @@ exports.run = (client, message, args) => {
             const iEmbed = new Discord.MessageEmbed()
                 .setTitle("Mağaza")
                 .setColor("RANDOM")
+                .setFooter("3/3 sayfa")
 
             for (let ii = 0; ii < icategories.length; ii++) {
 

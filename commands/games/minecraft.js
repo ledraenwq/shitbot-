@@ -22,6 +22,7 @@ exports.run = async (bot, message, args) => {
     const logDesc = "**Odun<:logg:756144484651237497>** \nEşya - 963"
     const obsDesc = "**Obsidyen<:obsi:756143375626928200>** \nEşya - 69000"
     const buckDesc = "**Kova<:buck:756142136419942491>** \nEşya - 800"
+    let pickDesc = '**Kazma<:pickaxe:744606156156174496>** \nEşya - 615'
 
     const water = "<:water:756135645721919588>"
     const log = "<:log:756134762128736336>"
@@ -167,7 +168,8 @@ exports.run = async (bot, message, args) => {
 
 
         let item = db.get(message.author.id)
-        if (!item.includes(buckDesc)) return message.channel.send("Kovan yok")
+
+        if (item === null || !item.includes(buckDesc)) return message.channel.send("Kovan yok")
         else if (item.includes(waterDesc)) {
           message.channel.send("Dolu kovan olduğu için kovanı doldurmadım")
         } else {
@@ -200,19 +202,20 @@ exports.run = async (bot, message, args) => {
           db.push(message.author.id, logDesc)
         }
 
+      } else if (KucukEkran[kazmaX][kazmaY] === 4) {
+
+        KucukEkran[kazmaX][kazmaY] = 5
+        BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
+        let item = db.get(message.author.id)
+        if (item === pickDesc) message.channel.send("Kazman yok")
+        else if (!item.includes(pickDesc)) message.channel.send("Kazman yok")
+        else if (item.includes(obsDesc)) {
+          message.channel.send("Obsidyenin olduğu için bir tane daha obsidyen vermedim")
+        } else {
+          db.push(message.author.id, obsDesc)
+        }
+
       }
-      /*else if (KucukEkran[kazmaX][kazmaY] === 4) {
-
-             KucukEkran[kazmaX][kazmaY] = 5
-             BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
-             let item = db.get(message.author.id)
-             if (item.includes(edesc)) {
-               message.channel.send("Zümrütün olduğu için bir tane daha zümrüt vermedim")
-             } else {
-               db.push(message.author.id, edesc)
-             }
-
-           }*/
 
       tasi(simdiX, simdiY, 5, 5);
       let m1 = " ";
