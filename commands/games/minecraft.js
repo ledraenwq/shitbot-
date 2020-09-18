@@ -169,7 +169,8 @@ exports.run = async (bot, message, args) => {
 
         let item = db.get(message.author.id)
 
-        if (item === null || !item.includes(buckDesc)) return message.channel.send("Kovan yok")
+        if (item === null) message.channel.send("Kovan yok")
+        else if (!item.includes(buckDesc)) message.channel.send("Kovan yok")
         else if (item.includes(waterDesc)) {
           message.channel.send("Dolu kovan olduğu için kovanı doldurmadım")
         } else {
@@ -193,26 +194,28 @@ exports.run = async (bot, message, args) => {
 
       } else if (KucukEkran[kazmaX][kazmaY] === 3) {
 
-        KucukEkran[kazmaX][kazmaY] = 5
-        BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
         let item = db.get(message.author.id)
         if (item.includes(logDesc)) {
           message.channel.send("Odunun olduğu için bir tane daha odun vermedim")
         } else {
           db.push(message.author.id, logDesc)
+
+          KucukEkran[kazmaX][kazmaY] = 5
+          BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
         }
 
       } else if (KucukEkran[kazmaX][kazmaY] === 4) {
 
-        KucukEkran[kazmaX][kazmaY] = 5
-        BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
         let item = db.get(message.author.id)
-        if (item === pickDesc) message.channel.send("Kazman yok")
+        if (item === null) message.channel.send("Kazman yok")
         else if (!item.includes(pickDesc)) message.channel.send("Kazman yok")
         else if (item.includes(obsDesc)) {
           message.channel.send("Obsidyenin olduğu için bir tane daha obsidyen vermedim")
         } else {
           db.push(message.author.id, obsDesc)
+
+          KucukEkran[kazmaX][kazmaY] = 5
+          BuyukEkran[simdiX + kazmaX][simdiY + kazmaY] = 5;
         }
 
       }

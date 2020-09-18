@@ -69,6 +69,7 @@ exports.run = async (client, message, args) => {
             )
             const buckDesc = "**Kova<:buck:756142136419942491>** \nEşya - 800"
             db.push(message.author.id, buckDesc);
+            db.add(`money_${message.author.id}`, sellPrice)
             message.channel.send(`${sellPrice} liraya ${itemName}'i sattın.`);
         } else {
 

@@ -54,7 +54,7 @@ exports.run = async (bot, message, args) => {
     let simdiY = 50;
     let kazmaX = 2;
     let kazmaY = 2;
-    let embed;
+
     for (let i = 0; i < BuyukEkranXX; i++) {
       for (var j = 0; j < BuyukEkranYY; j++) {
         Olasilik = Math.random() * 100;
