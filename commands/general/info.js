@@ -9,7 +9,7 @@ exports.run = async (bot, message, args) => {
     .addField("Server adı", message.guild.name, true)
     .addField("Server sayısı", bot.guilds.cache.size)
     .addField("RAM kullanımı", `RAM: ${Math.floor(process.memoryUsage().heapUsed / 1024 / 1024)} GB`, true)
-    .addField("Bot sahibi", "cinoez", true)
+    .addField("Bot sahibi", "khaos?", true)
 
     .setThumbnail(avatar)
     .setColor("RANDOM")
