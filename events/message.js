@@ -81,20 +81,23 @@ try {
     }
 
 
-    if (message.content.toLowerCase() = "bruh") {
+    if (message.content.toLowerCase() == "bruh") {
       message.channel.send("Bruuuuuuhh")
     }
 
 
     if (message.content.includes(["@everyone"]))
-      if (message.member.hasPermission("MANAGE_GUILD")) return
-    else {
-      message.delete()
-      message.channel.send("Ever atamazsın.")
-      message.delete()
-    }
+      if (message.member.hasPermission("MANAGE_GUILD")) {
+        "yuh"
+      } else {
+        message.delete()
+        message.channel.send("Ever atamazsın.")
+        message.delete()
+      }
     if (message.content.includes(["@here"]))
-      if (message.member.hasPermission("MANAGE_GUILD")) return
+      if (message.member.hasPermission("MANAGE_GUILD")) {
+        "yuh"
+      }
     else {
       message.delete()
       message.channel.send("Here atamazsın.")
