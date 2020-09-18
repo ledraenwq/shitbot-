@@ -100,6 +100,14 @@ try {
 
     }
 
+
+
+    try {
+      if (!commandFile) return;
+      commandFile.run(client, message, args);
+    } catch (error) {
+      console.log(error.message);
+    }
     if (message.channel.id === "719978901241200681") return
     else
     if (message.content == "31") {
@@ -152,13 +160,6 @@ try {
       message.delete()
       message.channel.send("Here atamazsın.")
       message.delete()
-    }
-
-    try {
-      if (!commandFile) return;
-      commandFile.run(client, message, args);
-    } catch (error) {
-      console.log(error.message);
     }
   }
 
